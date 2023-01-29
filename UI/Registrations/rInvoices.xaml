@@ -31,7 +31,7 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="AccountEdit" Height="30" Width="40" />
-                    <ComboBox x:Name="CustomerIdTextBox" Height="25" Width="250" SelectionChanged="CustomerId_SelectionChanged" materialDesign:HintAssist.HelperText="Client" materialDesign:HintAssist.HintOpacity=".25"/>
+                    <ComboBox x:Name="CustomerIdComboBox" Height="25" Width="250" SelectionChanged="CustomerId_SelectionChanged" materialDesign:HintAssist.HelperText="Client" materialDesign:HintAssist.HintOpacity=".25"/>
                 </StackPanel>
             </StackPanel>
             
@@ -59,22 +59,22 @@
                 <DataGrid x:Name="DatosDataGrid" Height="300"  Width="580" ItemsSource="{Binding Detalle}" AutoGenerateColumns="False" IsReadOnly="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Customer Id" Binding="{Binding CustomerId }" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Quantity" Binding="{Binding Qty}"/>
-                        <DataGridTextColumn Header="Price" Binding="{Binding Price,StringFormat=N2}"/>
-                        <DataGridTextColumn Header="Total Itbis" Binding="{Binding Totalitbis,StringFormat=N2}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal,StringFormat=N2}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Total" Binding="{Binding Total,StringFormat=N2}" IsReadOnly="True" />
+                        <DataGridTextColumn x:Name="QunatityGrid" Header="Quantity" Binding="{Binding Qty}"/>
+                        <DataGridTextColumn x:Name="PriceGrid" Header="Price" Binding="{Binding Price,StringFormat=N2}"/>
+                        <DataGridTextColumn x:Name="TotalItbisGrid" Header="Total Itbis" Binding="{Binding Totalitbis,StringFormat=N2}" IsReadOnly="True"/>
+                        <DataGridTextColumn x:Name="SubTotalGrid" Header="SubTotal" Binding="{Binding SubTotal,StringFormat=N2}" IsReadOnly="True" />
+                        <DataGridTextColumn x:Name="TotalGrid" Header="Total" Binding="{Binding Total,StringFormat=N2}" IsReadOnly="True" />
                     </DataGrid.Columns>
 
                 </DataGrid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="PagarButton"  Width="100" Height="35" >
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Guardar2.png" />
                             <Label x:Name="SaveLabel" Content="Save" Foreground="#DDF0ECEC" />
                         </StackPanel>
                     </Button>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
 
 
