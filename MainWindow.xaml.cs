@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client_Management.UI.Registrations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,25 @@ namespace Client_Management
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ClientsRegistry_Click(object sender, RoutedEventArgs e)
+        {
+
+            rCustomers rCustomers = new();
+            rCustomers.Show();
+        }
+
+        private void ClientsTypesRegistry_Click(object sender, RoutedEventArgs e)
+        {
+            rCustomersTypes rCustomersTypes = new();
+            rCustomersTypes.Show();
+        }
+
+        private void InvoicesRegistry_Click(object sender, RoutedEventArgs e)
+        {
+            rInvoices rInvoices = new();
+            rInvoices.Show();
         }
     }
 }
