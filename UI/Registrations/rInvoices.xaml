@@ -1,0 +1,105 @@
+﻿<Window x:Class="Client_Management.UI.Registrations.rInvoices"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client_Management.UI.Registrations"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Title="Invoices Registry" Height="600" Width="650">
+    <Grid>
+
+        <StackPanel Margin="10" Orientation="Vertical" HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <materialDesign:PackIcon Kind="Identifier" Height="30" Width="40"/>
+                <TextBox x:Name="IdTextBox" Height="25" Width="30" Text="{Binding Id}" materialDesign:HintAssist.Hint="Id..." materialDesign:HintAssist.HintOpacity=".25" />
+
+                <Button x:Name="BuscarIDButton" Height="30" Width="102" Click="BuscarIDButton_Click" Margin="10,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Buscar.png" Stretch="Uniform"/>
+                        <Label Content="Search" Foreground="#DDF0ECEC"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AccountEdit" Height="30" Width="40" />
+                    <ComboBox x:Name="CustomerIdTextBox" Height="25" Width="250" SelectionChanged="CustomerId_SelectionChanged" materialDesign:HintAssist.HelperText="Client" materialDesign:HintAssist.HintOpacity=".25"/>
+                </StackPanel>
+            </StackPanel>
+            
+            
+            <!--Prices-->
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Home" Height="30" Width="40"/>
+                    <TextBox x:Name="TotalitbisTextBox" Height="25" Width="100" Text="{Binding Totalitbis, StringFormat=N2}" materialDesign:HintAssist.HelperText="Total ITBIS" materialDesign:HintAssist.HintOpacity=".25" IsEnabled="False"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Home" Height="30" Width="40"/>
+                    <TextBox x:Name="SubTotalTextBox" Height="25" Width="100" Text="{Binding SubTotal, StringFormat=N2}" materialDesign:HintAssist.HelperText="Sub Total" materialDesign:HintAssist.HintOpacity=".25" IsEnabled="False"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Home" Height="30" Width="40"/>
+                    <TextBox x:Name="TotalTextBox" Height="25" Width="100" Text="{Binding Total, StringFormat=N2}" materialDesign:HintAssist.HelperText="Total" materialDesign:HintAssist.HintOpacity=".25" IsEnabled="False"/>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel HorizontalAlignment="Left"  Margin="0, 10">
+                <DataGrid x:Name="DatosDataGrid" Height="300"  Width="580" ItemsSource="{Binding Detalle}" AutoGenerateColumns="False" IsReadOnly="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer Id" Binding="{Binding CustomerId }" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Qty}"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price,StringFormat=N2}"/>
+                        <DataGridTextColumn Header="Total Itbis" Binding="{Binding Totalitbis,StringFormat=N2}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal,StringFormat=N2}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total,StringFormat=N2}" IsReadOnly="True" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="PagarButton"  Width="100" Height="35" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Guardar2.png" />
+                            <Label x:Name="SaveLabel" Content="Save" Foreground="#DDF0ECEC" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
+                <Button x:Name="NuevoButton" Height="36" Width="109" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="NuevoButton_Click" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Nuevo2.png" />
+                        <Label Content="New" Foreground="#DDF0ECEC" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="GuardarButton"  Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Guardar2.png" />
+                        <Label Content="Save"  Foreground="#DDF0ECEC" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="EliminarButton" Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="EliminarButton_Click" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Eliminar2.png" />
+                        <Label Content="Delete" Foreground="#DDF0ECEC"  />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

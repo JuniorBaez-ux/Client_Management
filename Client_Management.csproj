@@ -8,6 +8,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\add.png" />
+    <None Remove="Resources\Buscar.png" />
+    <None Remove="Resources\delete.png" />
+    <None Remove="Resources\Eliminar.jpeg" />
+    <None Remove="Resources\Eliminar2.png" />
+    <None Remove="Resources\Guardar.jpeg" />
+    <None Remove="Resources\Guardar2.png" />
+    <None Remove="Resources\inmobiliaria.png" />
+    <None Remove="Resources\Nuevo.jpeg" />
+    <None Remove="Resources\Nuevo2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\Buscar.png" />
+    <Content Include="Resources\delete.png" />
+    <Content Include="Resources\Eliminar.jpeg" />
+    <Content Include="Resources\Eliminar2.png" />
+    <Content Include="Resources\Guardar.jpeg" />
+    <Content Include="Resources\Guardar2.png" />
+    <Content Include="Resources\inmobiliaria.png" />
+    <Content Include="Resources\Nuevo.jpeg" />
+    <Content Include="Resources\Nuevo2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="2.1.1" />
     <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
@@ -19,8 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BLL\" />
-    <Folder Include="UI\" />
+    <Folder Include="UI\Consultations\" />
   </ItemGroup>
 
 </Project>
