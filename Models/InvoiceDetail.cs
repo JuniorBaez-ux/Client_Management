@@ -25,7 +25,7 @@ namespace Client_Management.Models
         public double Total { get; set;}
 
         [ForeignKey("CustomerId")]
-        public int CustomerId { get; set; }
+        public Invoice? CustomerId { get; set; }
         public virtual Invoice? Invoice{ get; set; }
     }
 }
