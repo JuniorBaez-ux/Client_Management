@@ -24,6 +24,15 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
 
             return retorno;
         }
+
+        public static Boolean ToBool(this string valor)
+        {
+            Boolean retorno;
+
+            Boolean.TryParse(valor, out retorno);
+
+            return retorno;
+        }
         public static double ToDouble(this object valor)
         {
             double retorno;

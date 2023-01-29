@@ -10,29 +10,29 @@ using System.Threading.Tasks;
 
 namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
 {
-    public class ClientsBLL
+    public class CustomersTypesBLL
     {
-        static Customers customers = new Customers();
-        public static bool Save(Customers customers)
+        static CustomerTypes customerstypes = new CustomerTypes();
+        public static bool Save(CustomerTypes customerstypes)
         {
-            if (!Exists(customers.Id))
+            if (!Exists(customerstypes.Id))
             {
-                return Insert(customers);
+                return Insert(customerstypes);
             }
             else
             {
-                return Modify(customers);
+                return Modify(customerstypes);
             }
         }
 
-        public static bool Insert(Customers customer)
+        public static bool Insert(CustomerTypes customerstypes)
         {   
             bool pass = false;
             Context context = new Context();
 
             try
             {
-                context.Customers.Add(customer);
+                context.CustomerTypes.Add(customerstypes);
                 pass = context.SaveChanges() > 0;
             }
             catch (Exception)
@@ -47,14 +47,14 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             return pass;
         }
 
-        public static bool Modify(Customers customer)
+        public static bool Modify(CustomerTypes customerstypes)
         {
             bool pass = false;
             Context context = new Context();
 
             try
             {
-                context.Entry(customer).State = EntityState.Modified;
+                context.Entry(customerstypes).State = EntityState.Modified;
                 pass = context.SaveChanges() > 0;
             }
             catch (Exception)
@@ -75,10 +75,10 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             Context context = new Context();
             try
             {
-                var Clients = context.Customers.Find(id);
-                if (Clients != null)
+                var CustomersTypes = context.CustomerTypes.Find(id);
+                if (CustomersTypes != null)
                 {
-                    context.Entry(Clients).State = EntityState.Deleted;
+                    context.Entry(CustomersTypes).State = EntityState.Deleted;
                     pass = context.SaveChanges() > 0;
 
                 }
@@ -101,7 +101,7 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             bool found = false;
             try
             {
-                found = context.Customers.Any(e => e.Id == id);
+                found = context.CustomerTypes.Any(e => e.Id == id);
             }
             catch (Exception)
             {
@@ -115,13 +115,13 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             return found;
         }
 
-        public static bool NameExists(string customer)
+        public static CustomerTypes Search(int id)
         {
             Context context = new Context();
-            bool found = false;
+            CustomerTypes? customerTypes;
             try
             {
-                found = context.Customers.Any(e => e.CustName.ToLower() == customer.ToLower());
+                customerTypes = context.CustomerTypes.Find(id);
             }
             catch (Exception)
             {
@@ -132,36 +132,16 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             {
                 context.Dispose();
             }
-            return found;
+            return customerTypes;
         }
 
-        public static Customers Search(int id)
+        public static List<CustomerTypes> GetList(Expression<Func<CustomerTypes, bool>> criteria)
         {
-            Context context = new Context();
-            Customers customers;
-            try
-            {
-                customers = context.Customers.Find(id);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                context.Dispose();
-            }
-            return customers;
-        }
-
-        public static List<Customers> GetList(Expression<Func<Customers, bool>> criteria)
-        {
-            List<Customers> list = new List<Customers>();
+            List<CustomerTypes> list = new List<CustomerTypes>();
             Context context = new Context();
             try
             {
-                list = context.Customers.Where(criteria).ToList();
+                list = context.CustomerTypes.Where(criteria).ToList();
             }
             catch (Exception)
             {
@@ -173,26 +153,6 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
                 context.Dispose();
             }
             return list;
-        }
-
-        public static bool IsActive(string nombre)
-        {
-            Context context = new Context();
-            bool found = false;
-            try
-            {
-                found = context.Customers.Any(e => e.CustName.ToLower() == nombre.ToLower() && e.Status != false);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                context.Dispose();
-            }
-            return found;
         }
     }
 }
