@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Client_Management.BLL
 {
-    public class InvoicesTypesBLL
+    public class InvoicesDetailBLL
     {
         static InvoiceDetail invoiceDetail = new InvoiceDetail();
         public static bool Save(InvoiceDetail invoicesdetails)
@@ -69,16 +69,18 @@ namespace Client_Management.BLL
             return pass;
         }
 
-        public static bool Delete(int id)
+        public static bool Delete(int id, int id2)
         {
             bool pass = false;
             Context context = new Context();
             try
             {
                 var InvoicesDetails = context.InvoiceDetails.Find(id);
-                if (InvoicesDetails != null)
+                var Invoices = context.Invoices.Find(id2);
+                if (InvoicesDetails != null && Invoices != null)
                 {
                     context.Entry(InvoicesDetails).State = EntityState.Deleted;
+                    context.Entry(Invoices).State = EntityState.Deleted;
                     pass = context.SaveChanges() > 0;
 
                 }
