@@ -29,6 +29,7 @@ namespace Client_Management.UI.Registrations
             invoiceDetail = new();
             InitializeComponent();
             this.DataContext = invoiceDetail;
+            ChargeComboBoxCostumer();
         }
 
         private void SearchIdButton_Click(object sender, RoutedEventArgs e)
@@ -90,6 +91,17 @@ namespace Client_Management.UI.Registrations
             }
         }
 
+        private void ChargeComboBoxCostumer() {
+            this.CustomerIdComboBox.ItemsSource = CustomersBLL.GetList(x => true);
+            this.CustomerIdComboBox.SelectedValuePath = "Id";
+            this.CustomerIdComboBox.DisplayMemberPath = "CustName";
+
+            if (CustomerIdComboBox.Items.Count > 0)
+            {
+                CustomerIdComboBox.SelectedIndex = 0;
+            }
+        }
+
         private void DatosDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CalculateTotals();
@@ -98,7 +110,7 @@ namespace Client_Management.UI.Registrations
         {
             CalculateTotals();
         }
-        private void ChargeComboCustomer()
+        private void ChargeComboCustomer(object sender, SelectionChangedEventArgs e)
         {
             this.CustomerIdComboBox.ItemsSource = CustomersBLL.GetList(x => true);
             this.CustomerIdComboBox.SelectedValuePath = "Id";

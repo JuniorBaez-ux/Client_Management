@@ -45,44 +45,6 @@ namespace Client_Management.UI.Registrations
 
             Load();
         }
-
-        private void NewButton_Click(object sender, RoutedEventArgs e)
-        {
-            Clear();
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!Validate())
-                return;
-
-            var pass = CustomersTypesBLL.Save(this.customerTypes);
-
-            if (pass)
-            {
-                Clear();
-                MessageBox.Show("Save successful!");
-            }
-            else
-                MessageBox.Show("The information couldn't be saved correctly...");
-
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            CustomerTypes exists = CustomersTypesBLL.Search(this.customerTypes.Id);
-
-            if (CustomersTypesBLL.Delete(this.customerTypes.Id))
-            {
-                Clear();
-                MessageBox.Show("The customer type has been eliminated successfully");
-            }
-            else
-            {
-                MessageBox.Show("There was an error in the elimination process...");
-            }
-        }
-
         private bool Validate()
         {
             bool isValid = true;
@@ -105,6 +67,42 @@ namespace Client_Management.UI.Registrations
         {
             this.DataContext = null;
             this.DataContext = this.customerTypes;
+        }
+
+        private void DeleteButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            CustomerTypes exists = CustomersTypesBLL.Search(this.customerTypes.Id);
+
+            if (CustomersTypesBLL.Delete(this.customerTypes.Id))
+            {
+                Clear();
+                MessageBox.Show("The customer type has been eliminated successfully");
+            }
+            else
+            {
+                MessageBox.Show("There was an error in the elimination process...");
+            }
+        }
+
+        private void SaveButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!Validate())
+                return;
+
+            var pass = CustomersTypesBLL.Save(this.customerTypes);
+
+            if (pass)
+            {
+                Clear();
+                MessageBox.Show("Save successful!");
+            }
+            else
+                MessageBox.Show("The information couldn't be saved correctly...");
+        }
+
+        private void NewButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Clear();
         }
     }
 }

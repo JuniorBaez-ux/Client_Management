@@ -42,16 +42,28 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10">
-
-                <ListBox x:Name="StatusClientChoice" Style="{StaticResource MaterialDesignChoiceChipAccentListBox}"  SelectionChanged="StatusClientChoice_SelectionChanged"
-                         ItemsSource="{Binding Status}" IsSynchronizedWithCurrentItem="true">
-                </ListBox>
+                <materialDesign:PackIcon Kind="AccountCheck" Height="30" Width="40"/>
+                <ComboBox
+                    x:Name="StatusComboBox"
+  MinWidth="128"
+  materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+  materialDesign:HintAssist.HelperText="Select the status"
+  materialDesign:HintAssist.Hint="Status"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+  materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryHueMidBrush}"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                    SelectedIndex="{Binding Status}">
+                    <!--<ComboBoxItem
+    Content="Active" />
+                    <ComboBoxItem
+    Content="Inactive" IsSelected="{Binding Status, Mode=OneWayToSource}"/>-->
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="AccountDetails" Height="30" Width="40"/>
-                    <ComboBox x:Name="CustomerTypeComboBox" Width="150" materialDesign:HintAssist.HelperText="CustomerType..." materialDesign:HintAssist.HintOpacity=".25"/>
+                    <ComboBox x:Name="CustomerTypeComboBox" Width="150" materialDesign:HintAssist.HelperText="CustomerType..." materialDesign:HintAssist.HintOpacity=".25" SelectedValue="{Binding CustomerTypeId}"/>
                 </StackPanel>
             </StackPanel>
 

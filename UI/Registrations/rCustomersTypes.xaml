@@ -20,7 +20,7 @@
                 <materialDesign:PackIcon Kind="Identifier" Height="30" Width="40"/>
                 <TextBox x:Name="IdTextBox" Height="25" Width="30" Text="{Binding Id}" materialDesign:HintAssist.Hint="Id..." materialDesign:HintAssist.HintOpacity=".25" />
 
-                <Button x:Name="BuscarIDButton" Height="30" Width="102" Click="BuscarIDButton_Click" Margin="10,0">
+                <Button x:Name="SearchIdButton" Height="30" Width="102" Click="SearchIdButton_Click" Margin="10,0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" Stretch="Uniform"/>
                         <Label Content="Search" Foreground="#DDF0ECEC"/>
@@ -36,19 +36,19 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
-                <Button x:Name="NuevoButton" Height="36" Width="109" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="NuevoButton_Click" Cursor="Hand">
+                <Button x:Name="NewButton" Height="36" Width="109" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="NewButton_Click_1" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo2.png" />
                         <Label Content="New" Foreground="#DDF0ECEC" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="GuardarButton"  Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="GuardarButton_Click">
+                <Button x:Name="SaveButton"  Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="SaveButton_Click_1">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar2.png" />
                         <Label Content="Save"  Foreground="#DDF0ECEC" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="EliminarButton" Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="EliminarButton_Click" Cursor="Hand">
+                <Button x:Name="DeleteButton" Height="36" Width="115" Margin="15,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Click="DeleteButton_Click_1" Cursor="Hand">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Eliminar2.png" />
                         <Label Content="Delete" Foreground="#DDF0ECEC"  />

@@ -12,7 +12,6 @@ namespace Client_Management.Models
     {
         [Key]
         public int Id { get; set; }
-
         [Required]
         public int Qty { get; set; }
         [Required]
@@ -24,7 +23,6 @@ namespace Client_Management.Models
         [Required]
         public double Total { get; set;}
 
-        [ForeignKey("CustomerId")]
         public Invoice? CustomerId { get; set; }
         public virtual Invoice? Invoice{ get; set; }
     }

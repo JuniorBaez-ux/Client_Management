@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
 {
-    public static class Utilities
+    public static class Utilities 
     {
         public static int ToInt(this object valor)
         {
@@ -56,6 +56,20 @@ namespace Proyecto_FInal_Administracion_De_Sistemas.BLL
             retorno = Math.Round(x, Decimales);
 
             return retorno;
+        }
+
+        public static string ParseStatus(this bool stat)
+        {
+            string status;
+
+            if (stat == false)
+            {
+                status = "Inactive";
+            }
+            else
+                status = "Active";
+
+            return status;
         }
     }
 }

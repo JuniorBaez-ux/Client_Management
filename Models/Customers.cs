@@ -22,6 +22,6 @@ namespace Client_Management.Models
         [ForeignKey("CustomerTypeId")]
         public int CustomerTypeId { get; set; }
 
-        public virtual CustomerTypes? CustomerTypes { get; set; }
+        public virtual CustomerTypes? CustomerType { get; set; }
     }
 }

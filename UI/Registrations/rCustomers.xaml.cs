@@ -28,6 +28,7 @@ namespace Client_Management.UI.Registrations
             InitializeComponent();
             this.DataContext = customer;
             ChargeComboCustomerType();
+            ChargeComboCustomerStatus();
         }
 
         private void SearchIdButton_Click(object sender, RoutedEventArgs e)
@@ -84,17 +85,6 @@ namespace Client_Management.UI.Registrations
                 MessageBox.Show("There was an error in the elimination process...");
             }
         }
-
-        private void StatusClientChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.StatusClientChoice.Items.Count > 0)
-            {
-                customer.Status = Utilities.ToBool(this.StatusClientChoice.SelectedValue.ToString());
-            }
-            else
-                return;
-        }
-
         private void ChargeComboCustomerType()
         {
             this.CustomerTypeComboBox.ItemsSource = CustomersTypesBLL.GetList(x => true);
@@ -107,10 +97,21 @@ namespace Client_Management.UI.Registrations
             }
         }
 
+        private void ChargeComboCustomerStatus()
+        {
+            this.StatusComboBox.SelectedValuePath = Utilities.ParseStatus(customer.Status);
+            this.StatusComboBox.DisplayMemberPath = Utilities.ParseStatus(customer.Status); ;
+
+            if (StatusComboBox.Items.Count > 0)
+            {
+                StatusComboBox.SelectedIndex = 0;
+            }
+        }
+
         private void SaveComboBox()
         {
             customer.CustomerTypeId = CustomerTypeComboBox.SelectedValue.ToString().ToInt();
-            customer.Status = Utilities.ToBool(this.StatusClientChoice.SelectedValue.ToString());
+            customer.Status = Utilities.ToBool(this.StatusComboBox.SelectedValue.ToString());
         }
 
         private bool Validate()
@@ -126,11 +127,6 @@ namespace Client_Management.UI.Registrations
             {
                 isValid = false;
                 MessageBox.Show("Please insert a valid adress");
-            }
-            if (StatusClientChoice.SelectedItems.Count <= 0)
-            {
-                isValid = false;
-                MessageBox.Show("Please select the status of the client");
             }
             return isValid;
         }
